@@ -31,7 +31,7 @@ namespace TeaTime
     /// </summary>
     [DebuggerDisplay("#{ticks} {Year}.{Month}.{Day} {Hour}:{Minute}:{Second}")]
     [Serializable]
-    public struct Time : IEquatable<Time>
+    public struct Time : IEquatable<Time>, IComparable<Time>
     {
         #region Static members - per class configuration
 
@@ -443,6 +443,11 @@ namespace TeaTime
         public int Compare(Time other)
         {
             return this.ticks.CompareTo(other);
+        }
+
+        public int CompareTo(Time other)
+        {
+            return this.ticks.CompareTo(other.Ticks);
         }
 
         #endregion

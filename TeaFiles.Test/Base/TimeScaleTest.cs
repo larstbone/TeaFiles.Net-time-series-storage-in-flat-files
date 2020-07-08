@@ -123,5 +123,29 @@ namespace TeaTime
             Time t = new DateTime(1970, 1, 3);
             t.Ticks.Should().Be(2 * 86400 * 1000);
         }
+
+        [TestMethod]
+        public void CompareSame()
+        {
+            Time t1 = new DateTime(1970, 1, 3);
+            Time t2 = new DateTime(1970, 1, 3);
+            t1.CompareTo(t2).Should().Be(0);
+        }
+
+        [TestMethod]
+        public void CompareEarlier()
+        {
+            Time t1 = new DateTime(1970, 1, 3);
+            Time t2 = new DateTime(1971, 1, 3);
+            t1.CompareTo(t2).Should().Be(-1);
+        }
+
+        [TestMethod]
+        public void CompareLater()
+        {
+            Time t1 = new DateTime(1971, 1, 3);
+            Time t2 = new DateTime(1970, 1, 3);
+            t1.CompareTo(t2).Should().Be(1);
+        }
     }
 }
